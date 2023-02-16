@@ -14,7 +14,7 @@ perf_nec2 = {} #usuarios que possuem o perfil necessário para a vaga 2
 
 #função que faz a adição do curriculo
 def contratar():
-  '''Função que recebe o arquivo txt da minibio do candidato para o processo seletivo.'''
+  '''Função que faz o cadastro de cada candidato na vaga.'''
   print('~'*80)
   print('Vaga 1 - necessário: \nPython, Programação e Desenvolvimento. \n\nVaga 2 - necessário: \nAnálise de dados, Dados e SQL\n')
   print('~'*80)
