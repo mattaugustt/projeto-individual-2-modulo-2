@@ -1,24 +1,18 @@
 #Matheus Augusto
 #Projeto individual 2 - Módulo 2
-
-
-#Desenvolver um projeto (usando dicionários) que vai gravar
-#a quantidade de currículos para aquela vaga e quantas
-#pessoas têm as palavras-chave necessárias no currículo. 
-
-#Para isso, nosso código Python vai checar para qual vaga a
-#pessoa se inscreveu e o resumo que a pessoa enviou em
-#busca dessas informações.
+#Contratando! 
 
 
 vagas = {1 : ('Python', 'Programação', 'Desenvolvimento', 'python', 'programação','desenvolvimento'),
          2 : ('Análise de dados', 'Dados', 'SQL', 'análise de dados', 'dados', 'sql')}
-         #chaves com as variações em minusculo e maiusculo.
+         #chaves com as habilidades necessárias com as variações em minusculo e maiusculo.
          
-candidatos = [] #armazenamento dos usuários cadastrados
-perf_nec1 = [] #usuarios que possuem o perfil necessário para a vaga 1
-perf_nec2 = [] #usuarios que possuem o perfil necessário para a vaga 2
+candidatos = {} #armazenamento dos usuários cadastrados
+perf_nec1 = {} #usuarios que possuem o perfil necessário para a vaga 1
+perf_nec2 = {} #usuarios que possuem o perfil necessário para a vaga 2
 
+
+#função que faz a adição do curriculo
 def contratar():
   '''Função que recebe o arquivo txt da minibio do candidato para o processo seletivo.'''
   print('~'*80)
@@ -28,12 +22,14 @@ def contratar():
   print('~'*80)
   nome = input('Diga qual seu nome:\n')  #nome do primeiro a ser inserido
   print('~'*80)
+
+
   while int(vaga) != 0:
     cont1 = 0 #contador de habilidades necessárias à vaga 1
     cont2 = 0 #contador de habilidades necessárias à vaga 2
     candidato = [] #armazenamento do usuário em questão
     print('~'*80)
-    curriculo = input('Diga quais são suas experiencias com as palavras-chave necessárias:\n')
+    curriculo = input('Diga quais são suas experiencias/habilidades com as palavras-chave necessárias:\n')
     print('~'*80)
     x = curriculo.split(',')
     for i in x:
@@ -43,8 +39,8 @@ def contratar():
         cont1 += 1
     
       if cont1 == 3:
-        perf_nec1.append(nome) #adiciona o candidato com o perfil necessário na lista com todos os usuários que 
-                                #cumprem os requisitos da vaga 1
+        perf_nec1[nome] = (curriculo) #adiciona o candidato com o perfil necessário no dicionário com todos os usuários que 
+                                      #cumprem os requisitos da vaga 1
       
     for i in x:
       if (vaga == '2') and (i in vagas[2]) and (x.index(i) == 0): #observa a primeira habilidade do candidato
@@ -53,13 +49,12 @@ def contratar():
         cont2 += 1
     
       if cont2 == 3:
-        perf_nec2.append(nome) #adiciona o candidato com o perfil necessário na lista com todos os usuários que 
-                                #cumprem os requisitos da vaga 2
+        perf_nec2[nome] = (curriculo) #adiciona o candidato com o perfil necessário no dicionário com todos os usuários que 
+                                      #cumprem os requisitos da vaga 2
       
-    candidato.append(nome)
-    candidato.append(vaga)
-    candidato.append(curriculo) #adicionam as informações individuais na lista com as informações do candidato
-    candidatos.append(candidato) #adiciona as informações do candidato na lista com as informações de todos os candidatos
+    candidatos[nome] = (vaga, curriculo)
+    #adicionam as informações individuais no par chave-valores com as informações do candidato
+
 
     
     print('Vaga 1 - necessário: \nPython, Programação e Desenvolvimento. \n\nVaga 2 - necessário: \nAnálise de dados, Dados e SQL\n')
@@ -68,41 +63,33 @@ def contratar():
     print('~'*80)
     nome = input('Diga qual seu nome:\n') #atualiza variavel
     print('~'*80)
-  
-  '''
-  #para leitura do arquivo
-  minibio = open(arq, 'r')
-  conta = 0
-  if (vaga == 1) and ('python' in minibio) and ('programação' in minibio) and ('desenvolvimento' in minibio):
-    conta += 1
-  
-  if (vaga == 2) and ('analise de dados' in minibio) and ('dados' in minibio) and ()
 
 
-'''
 
-
-#quantos candidatos tem o perfil necessário.
+#função que mostra usuários com o perfil necessário para cada vaga
 def perf_nec():
   '''Função que conta a quantidade de candidatos que possuem o perfil necessário.'''
-  print('Para a vaga 1,', len(perf_nec1), 'pessoa(s) possue(em) o perfil necessário. Sendo ela(s): \n', perf_nec1)
-  print('Para a vaga 2,', len(perf_nec2), 'pessoa(s) possue(em) o perfil necessário. Sendo ela(s): \n', perf_nec2)
+  print('Para a vaga 1,', len(perf_nec1.keys()), 'pessoa(s) possue(em) o perfil necessário. Sendo ela(s): \n', perf_nec1)
+  print('Para a vaga 2,', len(perf_nec2.keys()), 'pessoa(s) possue(em) o perfil necessário. Sendo ela(s): \n', perf_nec2)
 
 
-#quantos candidatos estão concorrendo a cada vaga específica.
-def conta_cand(lista):
+
+#função que mostra a quantidade de candidatos pra cada vaga
+def conta_cand(dicio):
   '''Função que conta a quantidade de candidatos para cada vaga.'''
   conta1 = 0
   conta2 = 0
-  for i in lista:
-    for j in i:
-      if j == '1':
-        conta1 += 1
-      if j == '2':
-        conta2 +=1
+  for chave,i in dicio.items():
+    if '1' in i:
+      conta1 += 1
+    if '2' in i:
+      conta2 +=1
   print('Vaga 1:', conta1, 'inscritos.')
   print('Vaga 2:', conta2, 'inscritos.')
 
 
-
-
+#print(candidatos)   #dicionário com os candidatos e suas informações
+#print(perf_nec1)   #dicionário com os candidatos com o perfil necessário na vaga 1
+#print(perf_nec2)   #dicionário com os candidatos com o perfil necessário na vaga 2
+#conta_cand(candidatos)   #mostra a quantidade de candidatos inscritos em cada uma das vagas
+#perf_nec()   #mostra a quantidade de candidatos com o perfil necessário, bem como os candidatos e suas habilidades, para cada vaga
