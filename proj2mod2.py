@@ -14,13 +14,13 @@ perf_nec2 = {} #usuarios que possuem o perfil necessário para a vaga 2
 
 #função que faz a adição do curriculo
 def contratar():
-  '''Função que faz o cadastro de cada candidato na vaga.'''
+  '''Função que recebe o arquivo txt da minibio do candidato para o processo seletivo.'''
   print('~'*80)
   print('Vaga 1 - necessário: \nPython, Programação e Desenvolvimento. \n\nVaga 2 - necessário: \nAnálise de dados, Dados e SQL\n')
   print('~'*80)
-  vaga = input('Para qual vaga deseja se candidatar? (ex: Vaga 1 - digite 1)\n') #vaga pretendida pelo primeiro a ser inserido
+  vaga = input('Para qual vaga o candidato se inscreveu? (ex: Vaga 1 - digite 1)\n') #vaga pretendida pelo primeiro a ser inserido
   print('~'*80)
-  nome = input('Diga qual seu nome:\n')  #nome do primeiro a ser inserido
+  nome = input('Diga qual o nome do candidato:\n')  #nome do primeiro a ser inserido
   print('~'*80)
 
 
@@ -29,7 +29,7 @@ def contratar():
     cont2 = 0 #contador de habilidades necessárias à vaga 2
     candidato = [] #armazenamento do usuário em questão
     print('~'*80)
-    curriculo = input('Diga quais são suas experiencias/habilidades com as palavras-chave necessárias:\n')
+    curriculo = input('Diga quais são as experiencias/habilidades do candidato com as palavras-chave necessárias:\n')
     print('~'*80)
     x = curriculo.split(',')
     for i in x:
@@ -59,9 +59,9 @@ def contratar():
     
     print('Vaga 1 - necessário: \nPython, Programação e Desenvolvimento. \n\nVaga 2 - necessário: \nAnálise de dados, Dados e SQL\n')
     print('~'*80)
-    vaga = input('Para qual vaga deseja se candidatar? (ex: Vaga 1 - digite 1)\n') #atualiza variavel 
+    vaga = input('Para qual vaga o candidato se inscreveu? (ex: Vaga 1 - digite 1)\n') #atualiza variavel 
     print('~'*80)
-    nome = input('Diga qual seu nome:\n') #atualiza variavel
+    nome = input('Diga qual o nome do candidato:\n') #atualiza variavel
     print('~'*80)
 
 
@@ -89,7 +89,7 @@ def conta_cand(dicio):
 
 
 #print(candidatos)   #dicionário com os candidatos e suas informações
-#print(perf_nec1)   #dicionário com os candidatos com o perfil necessário na vaga 1
-#print(perf_nec2)   #dicionário com os candidatos com o perfil necessário na vaga 2
+#print(perf_nec1)   #candidatos com o perfil necessário na vaga 1
+#print(perf_nec2)   #candidatos com o perfil necessário na vaga 2
 #conta_cand(candidatos)   #mostra a quantidade de candidatos inscritos em cada uma das vagas
-#perf_nec()   #mostra a quantidade de candidatos com o perfil necessário, bem como os candidatos e suas habilidades, para cada vaga
+#perf_nec()   #mostra a quantidade de candidatos com o perfil necessário, bem como os candidatos, para cada vaga
