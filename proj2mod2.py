@@ -61,6 +61,8 @@ def contratar():
     print('~'*80)
     vaga = input('Para qual vaga o candidato se inscreveu? (ex: Vaga 1 - digite 1)\n') #atualiza variavel 
     print('~'*80)
+    if int(vaga) == 0:
+         break
     nome = input('Diga qual o nome do candidato:\n') #atualiza variavel
     print('~'*80)
 
